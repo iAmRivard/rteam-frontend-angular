@@ -1,0 +1,99 @@
+<div class="sidebar-container container-12" id="navbarNav">
+    <div class="sidebar-logo">
+        {{usuario.nombre}}
+        <div class="row">
+            <div class="col-md-5  mt-2">
+                <img [src]="usuario.foto" class="img-thumbnail">
+            </div>
+            <div class="col-md-6">
+                <span class="badge badge-success text-white">activo </span>
+                <span class="badge badge-light"> {{usuario.rol}} </span>
+
+            </div>
+        </div>
+        <small class="user-link">@{{usuario.usuario}} </small>
+
+    </div>
+    <ul class="sidebar-navigation" id="style-2">
+        <div *ngIf="usuario.rol === 'jugador'">
+
+            <li class="header">Panel</li>
+            <li routerLink="/app/inicio" routerLinkActive="active">
+                <a >
+                    <i class="fa fa-home" aria-hidden="true"></i> Inicio
+                </a>
+            </li>
+            <li routerLink="juegos" routerLinkActive="active">
+                <a >
+                    <i class="fa fa-gamepad" aria-hidden="true"></i> Juegos
+                </a>
+            </li>
+            <li routerLink="/app/equipos" routerLinkActive="active">
+                <a >
+                    <i class="fa fa-users" aria-hidden="true"></i> Equipos
+                </a>
+            </li>
+
+            <li routerLink="vacantes" routerLinkActive="active">
+                <a >
+                    <i class="fa fa-list" aria-hidden="true"></i> Vacantes
+                </a>
+            </li>
+
+            <li routerLink="dashboard" routerLinkActive="active">
+                <a >
+                    <i class="fa fa-columns" aria-hidden="true"></i> Dashboard
+                </a>
+            </li>
+            <li routerLink="blog" routerLinkActive="active">
+                <a >
+                    <i class="fa fa-newspaper" aria-hidden="true"></i> Blog
+                </a>
+            </li>
+            <li routerLink="configuracion" routerLinkActive="active">
+                <a>
+                    <i class="fa fa-cog" aria-hidden="true"></i> Configuración
+                </a>
+            </li>
+            <li routerLink="informacion" routerLinkActive="active">
+                <a >
+                    <i class="fa fa-info-circle" aria-hidden="true"></i> Información
+                </a>
+            </li>
+            <li (click)="salir()" class="pointer">
+                <a >
+                    <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Salir
+                </a>
+            </li>
+        </div>
+        <div *ngIf="usuario.rol === 'administrador'">
+
+            <li class="header">Administración</li>
+            <li>
+                <a routerLink="/app/view/juegos" routerLinkActive="active">
+                    <i class="fa fa-cog" aria-hidden="true"></i> Juegos
+                </a>
+            </li>
+            <li>
+                <a routerLink="/app/view/categorias" routerLinkActive="active">
+                    <i class="fa fa-cog" aria-hidden="true"></i> Categorias
+                </a>
+            </li>
+            <li>
+                <a routerLink="/app/view/equipos" routerLinkActive="active">
+                    <i class="fa fa-cog" aria-hidden="true"></i> Equipos
+                </a>
+            </li>
+            <li>
+                <a routerLink="/app/view/configuracion" routerLinkActive="active">
+                    <i class="fa fa-cog" aria-hidden="true"></i> Configuración
+                </a>
+            </li>
+            <li (click)="salir()" class="pointer">
+                <a >
+                    <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Salir
+                </a>
+            </li>
+        </div>
+    </ul>
+</div>

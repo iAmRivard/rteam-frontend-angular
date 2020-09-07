@@ -1,0 +1,31 @@
+<div class="padre">
+    <div class="hijo">
+        <h3 class="text-center">Ingresar</h3>
+        <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-user"></i>
+                    </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Usuario" formControlName="usuario">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-key"></i> </span>
+                </div>
+                <input type="password" class="form-control" placeholder="Contraseña" formControlName="clave">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+        </form>
+        <br>
+        <div class="alert alert-warning" role="alert" *ngIf="validLoginForm">
+            <small> <b>Usuario</b> y <b>Contraseña</b> son requeridos.</small>
+        </div>
+        <small>{{mensaje}}</small>
+
+    </div>
+
+</div>

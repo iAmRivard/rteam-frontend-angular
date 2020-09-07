@@ -1,0 +1,58 @@
+<div *ngIf="load">Cargando..</div>
+
+<div class="container card p-2" *ngIf="!load">
+    <div class="row">
+        <div class="col-md-8" *ngIf="!imgConf">
+            <h4>Configuración</h4>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nombre</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Nombre">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Usuario</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Usuario">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Correo</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username">
+            </div>
+            <small> Esta cuenta fue creada el {{usuario.creacion}}</small>
+        </div>
+
+        <div class="col-md-4">
+            <div *ngIf="!actualizarImg">
+                <button class="btn btn-block btn-outline-secondary btn-sm" (click)="imgConf = !imgConf"
+                *ngIf="imgConf">Regresar</button>
+            </div>
+            <div class="img-perfil">
+                <img [src]="usuario.foto" class="rounded float-left img-thumbnail" *ngIf="!imgURL">
+                <img [src]="imgURL" class="img-thumbnail" *ngIf="imgURL">
+                <div class="middle">
+                    {{imgConf}}
+                    <button class="btn btn-block btn-outline-primary btn-sm" (click)="imgConf = !imgConf"
+                        *ngIf="!imgConf">Cambiar</button>
+                </div>
+            </div>
+            <div *ngIf="actualizarImg">
+                <button class="btn btn-primary" (click)="updateImg()">Actualizar</button>
+                <button class="btn btn-outline-danger" (click)="rechazarImg()">Rechazar</button>
+            </div>
+        </div>
+        <div>
+            <div class="col-md-8" *ngIf="imgConf">
+                <h4>Cambiar imagen</h4>
+                <div class="form-group">
+                    <label>Selecciona la imagen</label>
+                    <span style="color:red;" *ngIf="message_noimg">{{message_noimg}}</span>
+                    <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
